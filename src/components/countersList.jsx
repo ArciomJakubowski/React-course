@@ -25,13 +25,13 @@ const CountersList = () => {
         // console.log('handle reset');
     }
 
-    const handleIncrement = (valueCounter, incrId) => {
-        setCounters(counters.map((count) => count.id === incrId ? {...count, value: valueCounter} : {...count}))
+    const handleIncrement = (incrId) => {
+        setCounters((prevState) => prevState.map((count) => count.id === incrId ? {...count, value: (count.value += 1)} : {...count}))
         // console.log('counters12', counters);
     }
 
-    const handleDecrement = (valueCounter, decrId) => {
-        setCounters(prevState => prevState.map((count) => count.id === decrId && valueCounter >= 0 ? {...count, value: valueCounter} : {...count}))
+    const handleDecrement = (decrId) => {
+        setCounters((prevState) => prevState.map((count) => count.id === decrId && count.value > 0 ? {...count, value: (count.value -= 1)} : {...count}))
         // console.log('counters123', counters);
     }
 
